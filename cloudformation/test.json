@@ -1,0 +1,32 @@
+{
+	"Description": "create an ec2 instance",
+	"Parameters": {
+		"KeyPair" {
+			"Description": "ssh keypair"
+			"Type": "String"
+		}
+	},
+	"Resources": {
+		"EC2Instance": {
+			"Properties": {
+				"ImageId": "ami-75905e15"
+				"InstanceType": "m3.medium"
+				"KeyName": {
+					"Ref": "KeyPair"
+				}
+			},
+			"Type": "AWS::EC2::Instance"
+		}
+	},
+	"Outputs": {
+		"InstaceId": {
+
+
+			"Description": "the instanceid of new instance"
+			"Value": {
+				"Ref": "EC2Instance"
+			}
+		}
+	},
+	"AWSTemplateFormatVersion": "2016-07-31"
+}
